@@ -1,0 +1,43 @@
+# fly.toml app configuration file generated for wagtail-news-template-muddy-snowflake-1941 on 2026-01-01T13:06:46-05:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'wagtail-news-template-muddy-snowflake-1941'
+primary_region = 'iad'
+console_command = '/bin/bash'
+
+[build]
+  dockerfile = 'Dockerfile'
+
+[env]
+  DATABASE_URL = 'sqlite:////data/db.sqlite3'
+  MEDIA_ROOT = '/data/media'
+  PORT = '8000'
+
+[[mounts]]
+  source = 'wagtail'
+  destination = '/data'
+  initial_size = '1GB'
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [http_service.concurrency]
+    type = 'requests'
+    soft_limit = 20
+
+[[vm]]
+  size = 'shared-cpu-1x'
+  memory = '512mb'
+  cpu_kind = 'shared'
+  cpus = 1
+  memory_mb = 512
+
+[[statics]]
+  guest_path = '/data/media'
+  url_prefix = '/media'
