@@ -1,3 +1,20 @@
+#version 2026-01-22 du dépôt git atwnt1 (essai d’une copie du projet  wagtail/news-template: A Wagtail template for a news site)
+voir https://github.com/wagtail/news-template 
+
+  
+
+en mode apprentissage de wagtail et django avec les versions suivantes : 
+
+wagtail 7.2.1 
+
+Django 5.1.15 
+
+Python 3.10.12  
+
+ 
+
+-------------------------------------------------------------------------------------------------
+
 # Wagtail News Template
 
 This project template is designed for creating [Wagtail](https://wagtail.org) builds quickly, intended for developers to bootstrap their Wagtail site development using `wagtail start --template=`. The template comes with pre-defined pages, blocks, functionalities, and fixtures to streamline the initial setup process.
