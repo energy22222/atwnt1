@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "wnt202512.standardpages",
     "wnt202512.users",
     "wnt202512.utils",
+    "django.contrib.sitemaps",
     "wagtail.contrib.settings",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
