@@ -10,6 +10,9 @@ from wagtail.fields import StreamField
 from wnt202512.utils.models import BasePage, ArticleTopic
 from wnt202512.utils.blocks import CaptionedImageBlock, StoryBlock, FeaturedArticleBlock
 
+from wagtail.contrib.table_block.blocks import TableBlock 
+#from wagtail.models import Page 
+from wagtail import blocks 
 
 class ArticlePage(BasePage):
     template = "pages/article_page.html"
@@ -41,7 +44,22 @@ class ArticlePage(BasePage):
         blank=True,
         max_num=1,
     )
-    body = StreamField(StoryBlock())
+    
+    body = StreamField(StoryBlock(), use_json_field=True) 
+    
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+
+ 
+    
     featured_section_title = models.TextField(blank=True)
 
     search_fields = BasePage.search_fields + [

@@ -6,6 +6,11 @@
 {% block breadcrumbs %}
     {% include "navigation/breadcrumbs.html" %}
 {% endblock %}
+
+
+
+ 
+
 <div class="site-padding site-container gap-10 pt-20 md:pt-28 tall:md:pt-40 pb-10 md:pb-20 flex flex-col lg:flex-row">
     <div class="max-w-[872px]">
         <p class="text-sm md:text-base text-grey-700 dark:text-grey-200 font-codepro pt-0 pb-10">
@@ -67,8 +72,23 @@
 </div>
 {% endif %}
 
-{% include_block page.body %}
 
+  
+  
+
+  
+
+<div class="article-body">   
+
+    {% include_block page.body %}   
+
+  
+
+  </div>   
+
+ 
+
+  
 {% include "components/related-pages.html" %}
 
 {% endblock %}

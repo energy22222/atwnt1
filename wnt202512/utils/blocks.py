@@ -11,6 +11,9 @@ from wagtail.snippets.blocks import SnippetChooserBlock
 from wnt202512.utils.struct_values import CardStructValue, LinkStructValue
 
 
+from wagtail import blocks 
+from wagtail.contrib.table_block.blocks import TableBlock 
+
 class AccordionBlock(blocks.StructBlock):
     title = blocks.CharBlock(max_length=255)
     content = blocks.RichTextBlock()
@@ -224,6 +227,9 @@ class StoryBlock(blocks.StreamBlock):
     section = SectionBlock()
     cta = CTASectionBlock()
     statistics = StatisticSectionBlock()
+    table = TableBlock(required=False) 
 
     class Meta:
         template = "components/streamfield/stream_block.html"
+        
+
