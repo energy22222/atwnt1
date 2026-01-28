@@ -228,6 +228,7 @@ class StoryBlock(blocks.StreamBlock):
     cta = CTASectionBlock()
     statistics = StatisticSectionBlock()
     table = TableBlock(required=False) 
+    image = CaptionedImageBlock()  # ou ImageChooserBlock()
 
     class Meta:
         template = "components/streamfield/stream_block.html"

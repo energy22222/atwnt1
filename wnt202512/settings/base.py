@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     "wagtail.contrib.settings",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
-    'wagtail.contrib.table_block', 
+    'wagtail.contrib.table_block',  # ajout
     "wagtail.sites",
     "wagtail.users",
     "wagtail.snippets",
@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     "wagtail.images",
     "wagtail.search",
     "wagtail.admin",
-    "wagtail.contrib.search_promotions",
+    "wagtail.contrib.search_promotions",   
     "wagtail",
     "modelcluster",
     "taggit",
@@ -94,7 +94,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "wagtail.contrib.settings.context_processors.settings",
-            ],
+                ],
         },
     },
 ]
