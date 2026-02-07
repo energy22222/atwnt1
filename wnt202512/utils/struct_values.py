@@ -68,3 +68,9 @@ class CardStructValue(blocks.StructValue):
             return link.listing_summary or link.plain_introduction
 
         return ""
+        
+    def first_link(self): 
+        if self.get("link"): 
+            return self.get("link")[0] 
+        return None 
+        

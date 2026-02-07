@@ -14,6 +14,13 @@ from wnt202512.utils.struct_values import CardStructValue, LinkStructValue
 from wagtail import blocks 
 from wagtail.contrib.table_block.blocks import TableBlock 
 
+class LinkStructBlock(blocks.StructBlock): 
+    page = blocks.PageChooserBlock() 
+    title = blocks.CharBlock(required=False) 
+    class Meta: 
+        template = "components/streamfield/blocks/link_block.html" # CRUCIAL 
+
+        
 class AccordionBlock(blocks.StructBlock):
     title = blocks.CharBlock(max_length=255)
     content = blocks.RichTextBlock()
@@ -55,6 +62,7 @@ class InternalLinkBlock(blocks.StructBlock):
     class Meta:
         icon = "link"
         value_class = LinkStructValue
+        template = "components/streamfield/blocks/link_block.html" 
 
 
 class ArticlePageLinkBlock(InternalLinkBlock):
@@ -96,6 +104,8 @@ class QuoteBlock(blocks.StructBlock):
         template = "components/streamfield/blocks/quote_block.html"
 
 
+        
+        
 class CardBlock(blocks.StructBlock):
     heading = blocks.CharBlock(max_length=255)
     description = blocks.RichTextBlock(required=False, features=["bold", "italic"])

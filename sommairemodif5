@@ -1,0 +1,523 @@
+diff --git a/templates/base.html b/templates/base.html
+index 774df4c4..458db450 100644
+--- a/templates/base.html
++++ b/templates/base.html
+@@ -43,9 +43,104 @@
+ 
+         
+         <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+-
++        
+         {% block extra_css %}
++        {# commentaire #}
++        {# #}
++         <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"> 
+         
++<style> 
++
++    /* On garde vos correctifs de largeur */ 
++
++    .site-container { max-width: none !important; width: 100% !important; } 
++
++    .site-padding { padding: 0 !important; }
++
++  
++
++    /* On organise les cartes en colonnes propres */ 
++
++    .card-section { 
++
++        display: grid; 
++
++        /* Crée 3 colonnes sur ordinateur, 1 sur mobile */ 
++
++        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
++
++        gap: 30px; /* Espace entre les cartes */ 
++
++        padding: 20px 5%; /* Marge interne pour que les cartes ne touchent pas les bords de l'écran */ 
++
++    } 
++
++  
++
++    .card { 
++
++        border: 1px solid #e6e6e6; 
++
++        padding: 20px; 
++
++        border-radius: 8px; 
++
++        background-color: #fff; 
++
++        box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
++
++    } 
++    
++        /* Style forcé pour les titres de section */ 
++
++    h2:not(.sr-only) { 
++
++        display: block !important; 
++
++        font-size: 2.25rem !important; /* Taille imposante (env. 36px) */ 
++
++        font-weight: 700 !important;    /* Gras prononcé */ 
++
++        line-height: 1.2 !important; 
++
++        color: #1a2a2e !important;      /* La couleur sombre de votre thème */ 
++
++        padding-left: 5% !important;    /* Alignement avec les cartes */ 
++
++        margin-top: 2.5rem !important;  /* Espace au-dessus */ 
++
++        margin-bottom: 1.5rem !important; /* Espace en-dessous */ 
++
++        text-align: left !important; 
++
++    } 
++
++ 
++
++    /* Optionnel : Style pour les titres à l'intérieur des cartes (h3) */ 
++
++    .card h3 { 
++
++        font-size: 1.5rem !important; 
++
++        font-weight: 600 !important; 
++
++        margin-bottom: 10px !important; 
++
++    } 
++
++ 
++
++ 
++
++</style> 
++
++ 
++
++ 
++
++ 
++
+         {% endblock %}
+     </head>
+ 
+diff --git a/templates/components/streamfield/blocks/card_block.html b/templates/components/streamfield/blocks/card_block.html
+index ef62fdb6..78bb8db2 100644
+--- a/templates/components/streamfield/blocks/card_block.html
++++ b/templates/components/streamfield/blocks/card_block.html
+@@ -1,17 +1,59 @@
++{% comment %} templates/components/streamfield/blocks/card_block.html {% endcomment %} 
++{% load wagtailcore_tags %} 
++{% load wagtailimages_tags %} 
+ 
+-<div class="flex flex-col">
+-    {% if value.heading %}
+-        <h3 class="mb-8 text-xl md:text-2xl text-mackerel-300 font-semibold">{{ value.heading }}</h3>
+-    {% endif %}
+-    {% if value.description %}
+-        <div class="mb-8 md:mb-12 md:pb-16 text-lg md:text-xl">
+-            {{ value.description }}
+-        </div>
+-    {% endif %}
+-    {% if value.link %}
+-        {% with cta_link=value.link.0 %}
+-            {% include "components/button.html" with title=cta_link.value.get_title url=cta_link.value.get_url classes="w-full md:w-auto" %}
+-        {% endwith %}
+-    {% endif %}
+-</div>
++ 
+ 
++<div class="card"> 
++
++
++
++    {# Utilisation de la méthode get_image définie dans CardStructValue #} 
++
++    {% with card_img=self.get_image %} 
++
++        {% if card_img %} 
++
++            <div class="card-image"> 
++
++                {# Assurez-vous d'avoir chargé wagtailimages_tags en haut #} 
++
++                {% image card_img fill-300x200 %} 
++
++            </div> 
++
++        {% endif %} 
++
++    {% endwith %} 
++
++ 
++
++    <h3>{{ self.heading }}</h3>  
++
++  
++
++    <div class="card-description">  
++
++        {# On appelle la méthode get_description() au lieu du champ brut #} 
++
++        {{ self.get_description }}  
++
++    </div>  
++
++ 
++
++    {% if self.link %}  
++
++        <div class="card-links">  
++
++            {% for block in self.link %}  
++
++                {% include_block block %}  
++	
++            {% endfor %}  
++
++        </div>  
++
++    {% endif %}  
++
++</div> 
+diff --git a/templates/components/streamfield/blocks/card_section_block.html b/templates/components/streamfield/blocks/card_section_block.html
+index 8053b2f4..7754922e 100644
+--- a/templates/components/streamfield/blocks/card_section_block.html
++++ b/templates/components/streamfield/blocks/card_section_block.html
+@@ -1,12 +1,32 @@
++{% comment %} templates/components/streamfield/blocks/card_section_block.html {% endcomment %} 
++{% load wagtailcore_tags %} 
+ 
+-{% load wagtailcore_tags %}
++ 
+ 
+-{% include "components/streamfield/blocks/heading2_block.html" with large_spacing=True value=value.heading sr_only=value.sr_only_label %}
++{% comment %} Affichage du titre de la section {% endcomment %} 
+ 
++<section class="card-section-wrapper" style="margin-bottom: 50px; margin-top: 20px;"> 
++ 
+ 
+-<div class="flex flex-col md:flex-row gap-20">
+-    {% for card in value.cards %}
+-        {% include_block card %}
+-    {% endfor %}
+-</div>
++{% include "components/streamfield/blocks/heading2_block.html" with large_spacing=True value=value.heading sr_only=value.sr_only_label %} 
++
++ 
++
++<div class="card-section">  
++
++    {% for card in value.cards %} 
++
++        {# 'card' ici est un item du ListBlock. #} 
++
++        {# On utilise include_block pour que Wagtail cherche le template défini dans CardBlock.Meta #} 
++
++        {% include_block card %} 
++
++    {% endfor %} 
++
++</div> 
++
++</section> 
++
++ 
+ 
+diff --git a/templates/components/streamfield/blocks/heading2_block.html b/templates/components/streamfield/blocks/heading2_block.html
+index 8658dd3d..eedd1f0c 100644
+--- a/templates/components/streamfield/blocks/heading2_block.html
++++ b/templates/components/streamfield/blocks/heading2_block.html
+@@ -1,19 +1,15 @@
++{% load wagtailcore_tags %} 
+ 
+-{% load util_tags %}
++ 
+ 
+-{% if sr_only %}
+-    <h2 class="sr-only">{{ value }}</h2>
+-{% else %}
+-    <h2
+-        class="font-serif4 text-3xl md:text-5xl font-semibold
+-        {% if large_spacing %}
+-            mb-10 md:mb-20
+-        {% else %}
+-            mb-8 md:mb-10
+-        {% endif %}
+-        "
+-        >
+-        {{ value }}
+-    </h2>
+-{% endif %}
++{% if value %} 
+ 
++<h2 class="{% if sr_only %}sr-only{% endif %}"
++        style="font-size: 36px !important; font-weight: bold !important; display: block !important; margin: 20px 0 !important;"> 
++    {{ value }} 
++
++</h2> 
++
++{% endif %} 
++
++ 
+diff --git a/templates/pages/article_page.html b/templates/pages/article_page.html
+index 6590bee9..5fee2df4 100644
+--- a/templates/pages/article_page.html
++++ b/templates/pages/article_page.html
+@@ -74,12 +74,19 @@
+ 
+ 
+   
+-   <div class="article-body">    
++   
++
++   <div class="article-body">     
+ 
+-     {% include_block page.body %}    
++  
+ 
+-  </div>    
++     {% include_block page.body %}     
+ 
++  
++
++  </div>     
++
++ 
+  
+ 
+    
+diff --git a/templates/pages/home_page.html b/templates/pages/home_page.html
+index 52a54af6..f1a1a734 100644
+--- a/templates/pages/home_page.html
++++ b/templates/pages/home_page.html
+@@ -41,7 +41,13 @@
+     </div>
+ 
+     {% include_block page.body %}
++    
++    {% for block in page.carte %} 
+ 
++        {% include_block block %} 
++
++    {% endfor %} 
++    
+     {% include "components/related-pages.html" %}
+ 
+ {% endblock %}
+diff --git a/wnt202512/home/models.py b/wnt202512/home/models.py
+index f60f1306..43299d72 100644
+--- a/wnt202512/home/models.py
++++ b/wnt202512/home/models.py
+@@ -7,6 +7,9 @@ from wagtail.fields import StreamField
+ from wnt202512.utils.blocks import StoryBlock, InternalLinkBlock
+ from wnt202512.utils.models import BasePage
+ 
++from wnt202512.utils.blocks import BaseCardSectionBlock, CardSectionBlock 
++
++ 
+ 
+ class HomePage(BasePage):
+     template = "pages/home_page.html"
+@@ -20,12 +23,20 @@ class HomePage(BasePage):
+     body = StreamField(StoryBlock())
+     featured_section_title = models.TextField(blank=True)
+ 
++    # Au lieu de BaseCardSectionBlock() qui n'a pas de template : 
++    carte = StreamField([   
++        ("card_section", CardSectionBlock()), # Utilise la version avec template 
++    ], use_json_field=True, blank=True) 
++ 
++
++ 
+     search_fields = BasePage.search_fields + [index.SearchField("introduction")]
+ 
+     content_panels = BasePage.content_panels + [
+         FieldPanel("introduction"),
+         FieldPanel("hero_cta"),
+         FieldPanel("body"),
++        FieldPanel("carte"),
+         MultiFieldPanel(
+             [
+                 FieldPanel("featured_section_title", heading="Title"),
+diff --git a/wnt202512/home/static/css/welcome_page.css b/wnt202512/home/static/css/welcome_page.css
+index bad29334..e9299fb3 100644
+--- a/wnt202512/home/static/css/welcome_page.css
++++ b/wnt202512/home/static/css/welcome_page.css
+@@ -8,6 +8,69 @@ html {
+     box-sizing: inherit;
+ }
+ 
++
++.card-link { 
++
++    color: #007bff;          /* Une couleur bleue classique */ 
++
++    text-decoration: underline; /* Force le soulignement */ 
++
++    font-weight: bold; 
++
++} 
++
++ 
++
++.card-link:hover { 
++
++    color: #0056b3;          /* Devient plus foncé au survol */ 
++
++    text-decoration: none;    /* Optionnel : enlever le soulignement au survol */ 
++
++} 
++
++ 
++
++/* Si vous voulez qu'il ressemble à un bouton comme dans votre classe HTML "button" */ 
++
++.button { 
++
++    display: inline-block; 
++
++    padding: 10px 20px; 
++
++    background-color: #007bff; 
++
++    color: white !important; 
++
++    text-decoration: none; 
++
++    border-radius: 4px; 
++
++    margin-top: 10px; 
++
++} 
++
++ 
++
++.button:hover { 
++
++    background-color: #0056b3; 
++
++} 
++ 
++.card-section { 
++    display: grid; 
++    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
++    gap: 20px; 
++} 
++.card { 
++    border: 1px solid #ccc; 
++    padding: 1rem; 
++    border-radius: 8px; 
++} 
++ 
++ 
+ body {
+     max-width: 960px;
+     min-height: 100vh;
+diff --git a/wnt202512/news/static/css/article_page.css b/wnt202512/news/static/css/article_page.css
+index 931bd4bf..7f9be4cb 100644
+--- a/wnt202512/news/static/css/article_page.css
++++ b/wnt202512/news/static/css/article_page.css
+@@ -4,4 +4,46 @@
+ 
+     border: 1px solid #444 !important; 
+ 
++}
++
++.article-body .block-paragraph { 
++
++    margin-bottom: 1rem; 
++
+ } 
++
++ 
++
++.article-body .block-image { 
++
++    margin: 2rem 0; /* plus d’air autour des images */ 
++
++} 
++
++ 
++
++.article-body .block-heading { 
++
++    margin-top: 2rem; 
++
++    margin-bottom: 1rem; 
++
++} 
++
++
++.story-block { 
++
++    margin-bottom: 1rem; 
++
++} 
++
++ 
++
++.story-block-image { 
++
++    margin: 2rem 0; 
++
++} 
++
++ 
++ 
+diff --git a/wnt202512/utils/blocks.py b/wnt202512/utils/blocks.py
+index 231df6de..e4b80168 100644
+--- a/wnt202512/utils/blocks.py
++++ b/wnt202512/utils/blocks.py
+@@ -14,6 +14,13 @@ from wnt202512.utils.struct_values import CardStructValue, LinkStructValue
+ from wagtail import blocks 
+ from wagtail.contrib.table_block.blocks import TableBlock 
+ 
++class LinkStructBlock(blocks.StructBlock): 
++    page = blocks.PageChooserBlock() 
++    title = blocks.CharBlock(required=False) 
++    class Meta: 
++        template = "components/streamfield/blocks/link_block.html" # CRUCIAL 
++
++        
+ class AccordionBlock(blocks.StructBlock):
+     title = blocks.CharBlock(max_length=255)
+     content = blocks.RichTextBlock()
+@@ -55,6 +62,7 @@ class InternalLinkBlock(blocks.StructBlock):
+     class Meta:
+         icon = "link"
+         value_class = LinkStructValue
++        template = "components/streamfield/blocks/link_block.html" 
+ 
+ 
+ class ArticlePageLinkBlock(InternalLinkBlock):
+@@ -96,6 +104,8 @@ class QuoteBlock(blocks.StructBlock):
+         template = "components/streamfield/blocks/quote_block.html"
+ 
+ 
++        
++        
+ class CardBlock(blocks.StructBlock):
+     heading = blocks.CharBlock(max_length=255)
+     description = blocks.RichTextBlock(required=False, features=["bold", "italic"])
+diff --git a/wnt202512/utils/struct_values.py b/wnt202512/utils/struct_values.py
+index 80cb36f2..ab8b876f 100644
+--- a/wnt202512/utils/struct_values.py
++++ b/wnt202512/utils/struct_values.py
+@@ -68,3 +68,9 @@ class CardStructValue(blocks.StructValue):
+             return link.listing_summary or link.plain_introduction
+ 
+         return ""
++        
++    def first_link(self): 
++        if self.get("link"): 
++            return self.get("link")[0] 
++        return None 
++        

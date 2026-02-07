@@ -1,17 +1,59 @@
+{% comment %} templates/components/streamfield/blocks/card_block.html {% endcomment %} 
+{% load wagtailcore_tags %} 
+{% load wagtailimages_tags %} 
 
-<div class="flex flex-col">
-    {% if value.heading %}
-        <h3 class="mb-8 text-xl md:text-2xl text-mackerel-300 font-semibold">{{ value.heading }}</h3>
-    {% endif %}
-    {% if value.description %}
-        <div class="mb-8 md:mb-12 md:pb-16 text-lg md:text-xl">
-            {{ value.description }}
-        </div>
-    {% endif %}
-    {% if value.link %}
-        {% with cta_link=value.link.0 %}
-            {% include "components/button.html" with title=cta_link.value.get_title url=cta_link.value.get_url classes="w-full md:w-auto" %}
-        {% endwith %}
-    {% endif %}
-</div>
+ 
 
+<div class="card"> 
+
+
+
+    {# Utilisation de la méthode get_image définie dans CardStructValue #} 
+
+    {% with card_img=self.get_image %} 
+
+        {% if card_img %} 
+
+            <div class="card-image"> 
+
+                {# Assurez-vous d'avoir chargé wagtailimages_tags en haut #} 
+
+                {% image card_img fill-300x200 %} 
+
+            </div> 
+
+        {% endif %} 
+
+    {% endwith %} 
+
+ 
+
+    <h3>{{ self.heading }}</h3>  
+
+  
+
+    <div class="card-description">  
+
+        {# On appelle la méthode get_description() au lieu du champ brut #} 
+
+        {{ self.get_description }}  
+
+    </div>  
+
+ 
+
+    {% if self.link %}  
+
+        <div class="card-links">  
+
+            {% for block in self.link %}  
+
+                {% include_block block %}  
+	
+            {% endfor %}  
+
+        </div>  
+
+    {% endif %}  
+
+</div> 

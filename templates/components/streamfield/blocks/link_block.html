@@ -1,0 +1,22 @@
+{# templates/components/streamfield/blocks/link_block.html #} 
+
+
+
+
+{% if value.page %} 
+
+    <a href="{{ value.page.url }}" class="card-link">  
+
+        {% if value.title %} 
+
+            {{ value.title }} 
+
+        {% else %} 
+
+            {{ value.page.title }} 
+
+        {% endif %} 
+
+    </a> 
+
+{% endif %} 

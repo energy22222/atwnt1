@@ -1,19 +1,15 @@
+{% load wagtailcore_tags %} 
 
-{% load util_tags %}
+ 
 
-{% if sr_only %}
-    <h2 class="sr-only">{{ value }}</h2>
-{% else %}
-    <h2
-        class="font-serif4 text-3xl md:text-5xl font-semibold
-        {% if large_spacing %}
-            mb-10 md:mb-20
-        {% else %}
-            mb-8 md:mb-10
-        {% endif %}
-        "
-        >
-        {{ value }}
-    </h2>
-{% endif %}
+{% if value %} 
 
+<h2 class="{% if sr_only %}sr-only{% endif %}"
+        style="font-size: 36px !important; font-weight: bold !important; display: block !important; margin: 20px 0 !important;"> 
+    {{ value }} 
+
+</h2> 
+
+{% endif %} 
+
+ 

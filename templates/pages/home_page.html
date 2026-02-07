@@ -41,7 +41,13 @@
     </div>
 
     {% include_block page.body %}
+    
+    {% for block in page.carte %} 
 
+        {% include_block block %} 
+
+    {% endfor %} 
+    
     {% include "components/related-pages.html" %}
 
 {% endblock %}

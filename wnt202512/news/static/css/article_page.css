@@ -4,4 +4,46 @@
 
     border: 1px solid #444 !important; 
 
+}
+
+.article-body .block-paragraph { 
+
+    margin-bottom: 1rem; 
+
 } 
+
+ 
+
+.article-body .block-image { 
+
+    margin: 2rem 0; /* plus d’air autour des images */ 
+
+} 
+
+ 
+
+.article-body .block-heading { 
+
+    margin-top: 2rem; 
+
+    margin-bottom: 1rem; 
+
+} 
+
+
+.story-block { 
+
+    margin-bottom: 1rem; 
+
+} 
+
+ 
+
+.story-block-image { 
+
+    margin: 2rem 0; 
+
+} 
+
+ 
+ 

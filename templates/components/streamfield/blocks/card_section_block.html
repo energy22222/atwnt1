@@ -1,12 +1,32 @@
+{% comment %} templates/components/streamfield/blocks/card_section_block.html {% endcomment %} 
+{% load wagtailcore_tags %} 
 
-{% load wagtailcore_tags %}
+ 
 
-{% include "components/streamfield/blocks/heading2_block.html" with large_spacing=True value=value.heading sr_only=value.sr_only_label %}
+{% comment %} Affichage du titre de la section {% endcomment %} 
 
+<section class="card-section-wrapper" style="margin-bottom: 50px; margin-top: 20px;"> 
+ 
 
-<div class="flex flex-col md:flex-row gap-20">
-    {% for card in value.cards %}
-        {% include_block card %}
-    {% endfor %}
-</div>
+{% include "components/streamfield/blocks/heading2_block.html" with large_spacing=True value=value.heading sr_only=value.sr_only_label %} 
+
+ 
+
+<div class="card-section">  
+
+    {% for card in value.cards %} 
+
+        {# 'card' ici est un item du ListBlock. #} 
+
+        {# On utilise include_block pour que Wagtail cherche le template défini dans CardBlock.Meta #} 
+
+        {% include_block card %} 
+
+    {% endfor %} 
+
+</div> 
+
+</section> 
+
+ 
 
