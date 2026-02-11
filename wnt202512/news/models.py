@@ -8,11 +8,12 @@ from wagtail.search import index
 
 from wagtail.fields import StreamField
 from wnt202512.utils.models import BasePage, ArticleTopic
-from wnt202512.utils.blocks import CaptionedImageBlock, StoryBlock, FeaturedArticleBlock
+from wnt202512.utils.blocks import ImageBlock, CaptionedImageBlock, StoryBlock, FeaturedArticleBlock
 
 from wagtail.contrib.table_block.blocks import TableBlock 
 #from wagtail.models import Page 
 from wagtail import blocks 
+
 
 class ArticlePage(BasePage):
     template = "pages/article_page.html"
@@ -40,25 +41,12 @@ class ArticlePage(BasePage):
     )
     introduction = models.TextField(blank=True)
     image = StreamField(
-        [("image", CaptionedImageBlock())],
+        [("image", CaptionedImageBlock())],   #CaptionedImageBlock()
         blank=True,
         max_num=1,
     )
     
     body = StreamField(StoryBlock(), use_json_field=True) 
-    
- 
-
- 
-
- 
- 
-
- 
-
- 
-
- 
     
     featured_section_title = models.TextField(blank=True)
 
@@ -87,13 +75,21 @@ class ArticlePage(BasePage):
         ),
     ]
 
+    @property 
+    def get_list_image(self): 
+        # On parcourt le StreamField 'image' 
+        for block in self.image: 
+            if block.block_type == 'image': 
+                # On retourne l'objet image (Wagtail Image) caché dans le bloc 
+                return block.value.get('image') 
+        return None 
+
     @property
     def display_date(self):
         if self.publication_date:
             return self.publication_date.strftime("%d %b %Y")
         elif self.first_published_at:
             return self.first_published_at.strftime("%d %b %Y")
-
 
 class NewsListingPage(BasePage):
     template = "pages/news_listing_page.html"
@@ -133,10 +129,8 @@ class NewsListingPage(BasePage):
         queryset = (
             ArticlePage.objects.live()
             .public()
-            .annotate(
-                date=Coalesce("publication_date", "first_published_at"),
-            )
-            .select_related("listing_image", "author", "topic")
+            .annotate(date=Coalesce("publication_date", "first_published_at"),)
+            .select_related("author", "topic")
             .order_by("-date")
         )
 
