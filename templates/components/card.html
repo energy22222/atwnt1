@@ -13,11 +13,11 @@ w-full h-full group
         lg:max-w-full
         w-full 
     ">
-        {% if page.listing_image %}
-            {% image page.listing_image format-jpeg fill-800x600 as card_image_1x_jpg %}
-            {% image page.listing_image format-jpeg fill-1600x1200 as card_image_2x_jpg %}
-            {% image page.listing_image format-webp fill-800x600 as card_image_1x_webp %}
-            {% image page.listing_image format-webp fill-1600x1200 as card_image_2x_webp %}
+        {% if page.get_list_image %}
+            {% image page.get_list_image format-jpeg fill-800x600 as card_image_1x_jpg %}
+            {% image page.get_list_image format-jpeg fill-1600x1200 as card_image_2x_jpg %}
+            {% image page.get_list_image format-webp fill-800x600 as card_image_1x_webp %}
+            {% image page.get_list_image format-webp fill-1600x1200 as card_image_2x_webp %}
         {% else %}
             
             {% image settings.utils.SystemMessagesSettings.get_placeholder_image format-jpeg fill-800x600 as card_image_1x_jpg %}
