@@ -52,6 +52,7 @@ class ArticlePage(BasePage):
 
     search_fields = BasePage.search_fields + [
         index.SearchField("introduction"),
+        index.SearchField("body"),
         index.FilterField("topic"),
     ]
 

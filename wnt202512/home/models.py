@@ -30,7 +30,10 @@ class HomePage(BasePage):
  
 
  
-    search_fields = BasePage.search_fields + [index.SearchField("introduction")]
+    search_fields = BasePage.search_fields +[
+        index.SearchField("introduction"),
+        index.SearchField("body"),
+    ]
 
     content_panels = BasePage.content_panels + [
         FieldPanel("introduction"),

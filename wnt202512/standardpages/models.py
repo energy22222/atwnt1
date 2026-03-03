@@ -16,7 +16,10 @@ class StandardPage(BasePage):
     body = StreamField(StoryBlock())
     featured_section_title = models.TextField(blank=True)
 
-    search_fields = BasePage.search_fields + [index.SearchField("introduction")]
+    search_fields = BasePage.search_fields + [
+        index.SearchField("introduction"),
+        index.SearchField("body")
+    ]
 
     content_panels = BasePage.content_panels + [
         FieldPanel("introduction"),
@@ -42,7 +45,10 @@ class IndexPage(BasePage):
     introduction = RichTextField(blank=True)
     body = StreamField(StoryBlock(), blank=True)
 
-    search_fields = BasePage.search_fields + [index.SearchField("introduction")]
+    search_fields = BasePage.search_fields + [
+        index.SearchField("body"),
+        index.SearchField("introduction")
+    ]
 
     content_panels = BasePage.content_panels + [
         FieldPanel("introduction"),

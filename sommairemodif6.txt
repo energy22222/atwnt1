@@ -1,0 +1,112 @@
+diff --git a/templates/base.html b/templates/base.html
+index 458db450..0553684a 100644
+--- a/templates/base.html
++++ b/templates/base.html
+@@ -97,7 +97,7 @@
+ 
+         display: block !important; 
+ 
+-        font-size: 2.25rem !important; /* Taille imposante (env. 36px) */ 
++        font-size: 1rem !important; /* a 2.25 - Taille imposante (env. 36px) */ 
+ 
+         font-weight: 700 !important;    /* Gras prononcé */ 
+ 
+diff --git a/templates/pages/article_page.html b/templates/pages/article_page.html
+index 5fee2df4..1d13957f 100644
+--- a/templates/pages/article_page.html
++++ b/templates/pages/article_page.html
+@@ -83,10 +83,15 @@
+      {% include_block page.body %}     
+ 
+   
+-
+   </div>     
+ 
++
++<h4 class="font-serif4 font-bold text-3xl lg:text-3xl">
++<a href="{{ page.get_parent.url }}">Retour au blogue</a>
++</h4>
++<p  /p>
+  
++
+  
+ 
+    
+diff --git a/wnt202512/home/models.py b/wnt202512/home/models.py
+index 43299d72..afc54537 100644
+--- a/wnt202512/home/models.py
++++ b/wnt202512/home/models.py
+@@ -30,7 +30,10 @@ class HomePage(BasePage):
+  
+ 
+  
+-    search_fields = BasePage.search_fields + [index.SearchField("introduction")]
++    search_fields = BasePage.search_fields +[
++        index.SearchField("introduction"),
++        index.SearchField("body"),
++    ]
+ 
+     content_panels = BasePage.content_panels + [
+         FieldPanel("introduction"),
+diff --git a/wnt202512/news/models.py b/wnt202512/news/models.py
+index cc585e27..cdbf58c8 100644
+--- a/wnt202512/news/models.py
++++ b/wnt202512/news/models.py
+@@ -52,6 +52,7 @@ class ArticlePage(BasePage):
+ 
+     search_fields = BasePage.search_fields + [
+         index.SearchField("introduction"),
++        index.SearchField("body"),
+         index.FilterField("topic"),
+     ]
+ 
+diff --git a/wnt202512/news/static/css/article_page.css b/wnt202512/news/static/css/article_page.css
+index 7f9be4cb..bb0a1264 100644
+--- a/wnt202512/news/static/css/article_page.css
++++ b/wnt202512/news/static/css/article_page.css
+@@ -16,7 +16,7 @@
+ 
+ .article-body .block-image { 
+ 
+-    margin: 2rem 0; /* plus d’air autour des images */ 
++    margin: 1rem 0; /* plus d’air autour des images */ 
+ 
+ } 
+ 
+@@ -41,7 +41,7 @@
+ 
+ .story-block-image { 
+ 
+-    margin: 2rem 0; 
++    margin: 1rem 0; 
+ 
+ } 
+ 
+diff --git a/wnt202512/standardpages/models.py b/wnt202512/standardpages/models.py
+index 70185b4e..c3671667 100644
+--- a/wnt202512/standardpages/models.py
++++ b/wnt202512/standardpages/models.py
+@@ -16,7 +16,10 @@ class StandardPage(BasePage):
+     body = StreamField(StoryBlock())
+     featured_section_title = models.TextField(blank=True)
+ 
+-    search_fields = BasePage.search_fields + [index.SearchField("introduction")]
++    search_fields = BasePage.search_fields + [
++        index.SearchField("introduction"),
++        index.SearchField("body")
++    ]
+ 
+     content_panels = BasePage.content_panels + [
+         FieldPanel("introduction"),
+@@ -42,7 +45,10 @@ class IndexPage(BasePage):
+     introduction = RichTextField(blank=True)
+     body = StreamField(StoryBlock(), blank=True)
+ 
+-    search_fields = BasePage.search_fields + [index.SearchField("introduction")]
++    search_fields = BasePage.search_fields + [
++        index.SearchField("body"),
++        index.SearchField("introduction")
++    ]
+ 
+     content_panels = BasePage.content_panels + [
+         FieldPanel("introduction"),
