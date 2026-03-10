@@ -103,6 +103,24 @@ ul {
     font-weight: 400;
 }
 
+/* 10mars Force la visibilité des titres H2 en mode sombre */ 
+
+.dark h2 { 
+
+    color: #ffffff !important; 
+
+} 
+
+ 
+
+/* 10mars Par sécurité, vous pouvez aussi le faire pour tous les titres */ 
+
+.dark h1, .dark h2, .dark h3, .dark h4 { 
+
+    color: #ffffff !important; 
+
+} 
+
 svg:not(:root) {
     overflow: hidden;
 }
@@ -245,3 +263,147 @@ svg:not(:root) {
         max-width: 100px;
     }
 }
+
+/* modif7 : rapatrié de py/wnt202512/static/css */ 
+
+.site-padding { 
+
+    padding-left: 0 !important; 
+
+    padding-right: 0 !important; 
+
+} 
+
+  
+
+.site-container { 
+
+    max-width: 100% !important; 
+
+    width: 100% !important; 
+
+} 
+
+/* modif7 */
+h2:not(.sr-only) {  
+
+    display: block !important;  
+
+    padding-left: 0 !important; /* Changez 5% par 0 */ 
+
+    margin-top: 30px !important;  
+
+    margin-bottom: 20px !important;  
+
+    font-size: 2rem;  
+
+    color: #1a2a2e;  
+
+} 
+
+/* Modif7 vs encadré dans les tableaux */ 
+
+/* 8 et 10 fev */ 
+
+/* --- STYLE DE BASE (FOND CLAIR) --- */ 
+
+table { 
+
+    width: 100%; 
+
+    border-collapse: collapse; 
+
+    color: #333333; /* Texte sombre par défaut */ 
+
+    background-color: #ffffff; /* Fond blanc forcé */ 
+
+} 
+
+ 
+
+th, td { 
+
+    border: 1px solid #ddd; 
+
+    padding: 10px; 
+
+} 
+
+ 
+
+thead tr { 
+
+    background-color: #2c3e50; 
+
+    color: #ffffff; 
+
+} 
+
+ 
+
+tbody tr:nth-child(even) { 
+
+    background-color: #f2f2f2; /* Ligne grise claire */ 
+
+} 
+
+ 
+
+/* --- STYLE POUR LE MODE SOMBRE (news-template) --- */ 
+
+/* On cible la classe .dark qui est ajoutée par le template */ 
+
+.dark table { 
+
+    background-color: #1a1a1a; /* Fond de secours sombre */ 
+
+    color: #ffffff;            /* Force le texte en blanc pour TOUTES les lignes */ 
+
+    border-color: #444; 
+
+} 
+
+ 
+
+.dark th, .dark td { 
+
+    border-color: #444; 
+
+} 
+
+ 
+
+/* Lignes impaires en mode sombre (celles qui posent problème) */ 
+
+.dark tbody tr:nth-child(odd) { 
+
+    background-color: #1a1a1a; /* Un gris très foncé */ 
+
+    color: #ffffff !important; /* Force le texte blanc */ 
+
+} 
+
+ 
+
+/* Lignes paires en mode sombre (Zebra) */ 
+
+.dark tbody tr:nth-child(even) { 
+
+    background-color: #2d2d2d; /* Un gris un peu plus clair */ 
+
+    color: #ffffff !important; 
+
+} 
+
+ 
+
+/* Correction du survol (Hover) en mode sombre */ 
+
+.dark tbody tr:hover { 
+
+    background-color: #3d3d3d !important; 
+
+} 
+
+ 
+ 
