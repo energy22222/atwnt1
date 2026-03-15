@@ -1,0 +1,1117 @@
+diff --git a/templates/base.html b/templates/base.html
+index 0553684a..458db450 100644
+--- a/templates/base.html
++++ b/templates/base.html
+@@ -97,7 +97,7 @@
+ 
+         display: block !important; 
+ 
+-        font-size: 1rem !important; /* a 2.25 - Taille imposante (env. 36px) */ 
++        font-size: 2.25rem !important; /* Taille imposante (env. 36px) */ 
+ 
+         font-weight: 700 !important;    /* Gras prononcé */ 
+ 
+diff --git a/wnt202512/home/static/css/home.css b/wnt202512/home/static/css/home.css
+index 73335146..26352ae8 100644
+--- a/wnt202512/home/static/css/home.css
++++ b/wnt202512/home/static/css/home.css
+@@ -1,409 +1,814 @@
+-html {
+-    box-sizing: border-box;
+-}
++html { 
+ 
+-*,
+-*:before,
+-*:after {
+-    box-sizing: inherit;
+-}
++    box-sizing: border-box; 
+ 
++} 
++
++  
+ 
+-.card-link { 
++*, 
+ 
+-    color: #007bff;          /* Une couleur bleue classique */ 
++*:before, 
+ 
+-    text-decoration: underline; /* Force le soulignement */ 
++*:after { 
+ 
+-    font-weight: bold; 
++    box-sizing: inherit; 
+ 
+ } 
+ 
+- 
++  
++
++  
++
++.card-link {  
++
++  
++
++    color: #007bff;          /* Une couleur bleue classique */  
++
++  
++
++    text-decoration: underline; /* Force le soulignement */  
++
++  
++
++    font-weight: bold;  
++
++  
++
++}  
++
++  
++
++  
++
++  
++
++.card-link:hover {  
++
++  
++
++    color: #0056b3;          /* Devient plus foncé au survol */  
++
++  
++
++    text-decoration: none;    /* Optionnel : enlever le soulignement au survol */  
++
++  
++
++}  
++
++  
++
++  
++
++  
++
++/* Si vous voulez qu'il ressemble à un bouton comme dans votre classe HTML "button" */  
++
++  
++
++.button {  
++
++  
++
++    display: inline-block;  
++
++  
++
++    padding: 10px 20px;  
++
++  
++
++    background-color: #007bff;  
++
++  
++
++    color: white !important;  
++
++  
++
++    text-decoration: none;  
++
++  
++
++    border-radius: 4px;  
++
++  
++
++    margin-top: 10px;  
+ 
+-.card-link:hover { 
++  
+ 
+-    color: #0056b3;          /* Devient plus foncé au survol */ 
++}  
+ 
+-    text-decoration: none;    /* Optionnel : enlever le soulignement au survol */ 
++  
++
++  
++
++  
++
++.button:hover {  
++
++  
++
++    background-color: #0056b3;  
++
++  
++
++}  
++
++  
++
++.card-section {  
++
++    display: grid;  
++
++    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  
++
++    gap: 20px;  
++
++}  
++
++.card {  
++
++    border: 1px solid #ccc;  
++
++    padding: 1rem;  
++
++    border-radius: 8px;  
++
++}  
++
++  
++
++  
++
++body { 
++
++    max-width: 960px; 
++
++    min-height: 100vh; 
++
++    margin: 0 auto; 
++
++    padding: 0 15px; 
++
++    color: #231f20; 
++
++    font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif; 
++
++    line-height: 1.25; 
+ 
+ } 
+ 
+- 
++  
+ 
+-/* Si vous voulez qu'il ressemble à un bouton comme dans votre classe HTML "button" */ 
++a { 
+ 
+-.button { 
++    background-color: transparent; 
+ 
+-    display: inline-block; 
++    color: #308282; 
+ 
+-    padding: 10px 20px; 
++    text-decoration: underline; 
+ 
+-    background-color: #007bff; 
++} 
+ 
+-    color: white !important; 
++  
+ 
+-    text-decoration: none; 
++a:hover { 
++
++    color: #ea1b10; 
++
++} 
++
++  
++
++h1, 
++
++h2, 
++
++h3, 
++
++h4, 
++
++h5, 
++
++p, 
++
++ul { 
+ 
+-    border-radius: 4px; 
++    padding: 0; 
+ 
+-    margin-top: 10px; 
++    margin: 0; 
++
++    font-weight: 400; 
+ 
+ } 
+ 
+- 
++  
++
++/* 10mars Force la visibilité des titres H2 en mode sombre */  
++
++  
++
++.dark h2 {  
++
++  
++
++    color: #ffffff !important;  
++
++  
++
++}  
++
++  
++
++  
+ 
+-.button:hover { 
++  
+ 
+-    background-color: #0056b3; 
++/* 10mars Par sécurité, vous pouvez aussi le faire pour tous les titres */  
++
++  
++
++.dark h1, .dark h2, .dark h3, .dark h4 {  
++
++  
++
++    color: #ffffff !important;  
++
++  
++
++}  
++
++  
++
++svg:not(:root) { 
++
++    overflow: hidden; 
+ 
+ } 
+- 
+-.card-section { 
+-    display: grid; 
+-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+-    gap: 20px; 
++
++  
++
++.header { 
++
++    display: flex; 
++
++    justify-content: space-between; 
++
++    align-items: center; 
++
++    padding-top: 20px; 
++
++    padding-bottom: 10px; 
++
++    border-bottom: 1px solid #e6e6e6; 
++
+ } 
+-.card { 
+-    border: 1px solid #ccc; 
+-    padding: 1rem; 
+-    border-radius: 8px; 
++
++  
++
++.logo { 
++
++    width: 150px; 
++
++    margin-inline-end: 20px; 
++
+ } 
+- 
+- 
+-body {
+-    max-width: 960px;
+-    min-height: 100vh;
+-    margin: 0 auto;
+-    padding: 0 15px;
+-    color: #231f20;
+-    font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+-    line-height: 1.25;
+-}
+-
+-a {
+-    background-color: transparent;
+-    color: #308282;
+-    text-decoration: underline;
+-}
+-
+-a:hover {
+-    color: #ea1b10;
+-}
+-
+-h1,
+-h2,
+-h3,
+-h4,
+-h5,
+-p,
+-ul {
+-    padding: 0;
+-    margin: 0;
+-    font-weight: 400;
+-}
+-
+-/* 10mars Force la visibilité des titres H2 en mode sombre */ 
+-
+-.dark h2 { 
+-
+-    color: #ffffff !important; 
++
++  
++
++.logo a { 
++
++    display: block; 
+ 
+ } 
+ 
+- 
++  
+ 
+-/* 10mars Par sécurité, vous pouvez aussi le faire pour tous les titres */ 
++.figure-logo { 
+ 
+-.dark h1, .dark h2, .dark h3, .dark h4 { 
++    max-width: 150px; 
+ 
+-    color: #ffffff !important; 
++    max-height: 55.1px; 
+ 
+ } 
+ 
+-svg:not(:root) {
+-    overflow: hidden;
+-}
+-
+-.header {
+-    display: flex;
+-    justify-content: space-between;
+-    align-items: center;
+-    padding-top: 20px;
+-    padding-bottom: 10px;
+-    border-bottom: 1px solid #e6e6e6;
+-}
+-
+-.logo {
+-    width: 150px;
+-    margin-inline-end: 20px;
+-}
+-
+-.logo a {
+-    display: block;
+-}
+-
+-.figure-logo {
+-    max-width: 150px;
+-    max-height: 55.1px;
+-}
+-
+-.release-notes {
+-    font-size: 14px;
+-}
+-
+-.main {
+-    padding: 40px 0;
+-    margin: 0 auto;
+-    text-align: center;
+-}
+-
+-.figure-space {
+-    max-width: 265px;
+-}
+-
+-@keyframes pos {
+-    0%, 100% {
+-        transform: rotate(-6deg);
+-    }
+-    50% {
+-        transform: rotate(6deg);
+-    }
+-}
+-
+-.egg {
+-    fill: #43b1b0;
+-    animation: pos 3s ease infinite;
+-    transform: translateY(50px);
+-    transform-origin: 50% 80%;
+-}
+-
+-.main-text {
+-    max-width: 400px;
+-    margin: 5px auto;
+-}
+-
+-.main-text h1 {
+-    font-size: 22px;
+-}
+-
+-.main-text p {
+-    margin: 15px auto 0;
+-}
+-
+-.footer {
+-    display: flex;
+-    flex-wrap: wrap;
+-    justify-content: space-between;
+-    border-top: 1px solid #e6e6e6;
+-    padding: 10px;
+-}
+-
+-.option {
+-    display: block;
+-    padding: 10px 10px 10px 34px;
+-    position: relative;
+-    text-decoration: none;
+-}
+-
+-.option svg {
+-    width: 24px;
+-    height: 24px;
+-    fill: gray;
+-    border: 1px solid #d9d9d9;
+-    padding: 5px;
+-    border-radius: 100%;
+-    top: 10px;
+-    inset-inline-start: 0;
+-    position: absolute;
+-}
+-
+-.option h2 {
+-    font-size: 19px;
+-    text-decoration: underline;
+-}
+-
+-.option p {
+-    padding-top: 3px;
+-    color: #231f20;
+-    font-size: 15px;
+-    font-weight: 300;
+-}
+-
+-@media (max-width: 996px) {
+-    body {
+-        max-width: 780px;
+-    }
+-}
+-
+-@media (max-width: 767px) {
+-    .option {
+-        flex: 0 0 50%;
+-    }
+-}
+-
+-@media (max-width: 599px) {
+-    .main {
+-        padding: 20px 0;
+-    }
+-
+-    .figure-space {
+-        max-width: 200px;
+-    }
+-
+-    .footer {
+-        display: block;
+-        width: 300px;
+-        margin: 0 auto;
+-    }
+-}
+-
+-@media (max-width: 360px) {
+-    .header-link {
+-        max-width: 100px;
+-    }
+-}
+-
+-/* modif7 : rapatrié de py/wnt202512/static/css */ 
+-
+-.site-padding { 
+-
+-    padding-left: 0 !important; 
+-
+-    padding-right: 0 !important; 
++  
++
++.release-notes { 
++
++    font-size: 14px; 
+ 
+ } 
+ 
+-  
++  
+ 
+-.site-container { 
++.main { 
+ 
+-    max-width: 100% !important; 
++    padding: 40px 0; 
+ 
+-    width: 100% !important; 
++    margin: 0 auto; 
++
++    text-align: center; 
+ 
+ } 
+ 
+-/* modif7 */
+-h2:not(.sr-only) {  
++  
+ 
+-    display: block !important;  
++.figure-space { 
+ 
+-    padding-left: 0 !important; /* Changez 5% par 0 */ 
++    max-width: 265px; 
+ 
+-    margin-top: 30px !important;  
++} 
+ 
+-    margin-bottom: 20px !important;  
++  
++
++@keyframes pos { 
++
++    0%, 100% { 
++
++        transform: rotate(-6deg); 
++
++    } 
++
++    50% { 
+ 
+-    font-size: 2rem;  
++        transform: rotate(6deg); 
+ 
+-    color: #1a2a2e;  
++    } 
+ 
+ } 
+ 
+-/* Modif7 vs encadré dans les tableaux */ 
++  
+ 
+-/* 8 et 10 fev */ 
++.egg { 
+ 
+-/* --- STYLE DE BASE (FOND CLAIR) --- */ 
++    fill: #43b1b0; 
+ 
+-table { 
++    animation: pos 3s ease infinite; 
+ 
+-    width: 100%; 
++    transform: translateY(50px); 
+ 
+-    border-collapse: collapse; 
++    transform-origin: 50% 80%; 
+ 
+-    color: #333333; /* Texte sombre par défaut */ 
++} 
++
++  
++
++.main-text { 
+ 
+-    background-color: #ffffff; /* Fond blanc forcé */ 
++    max-width: 400px; 
++
++    margin: 5px auto; 
+ 
+ } 
+ 
+- 
++  
++
++.main-text h1 { 
++
++    font-size: 22px; 
++
++} 
++
++  
+ 
+-th, td { 
++.main-text p { 
+ 
+-    border: 1px solid #ddd; 
++    margin: 15px auto 0; 
++
++} 
++
++  
++
++.footer { 
++
++    display: flex; 
++
++    flex-wrap: wrap; 
++
++    justify-content: space-between; 
++
++    border-top: 1px solid #e6e6e6; 
+ 
+     padding: 10px; 
+ 
+ } 
+ 
+- 
++  
+ 
+-thead tr { 
++.option { 
+ 
+-    background-color: #2c3e50; 
++    display: block; 
+ 
+-    color: #ffffff; 
++    padding: 10px 10px 10px 34px; 
++
++    position: relative; 
++
++    text-decoration: none; 
+ 
+ } 
+ 
+- 
++  
++
++.option svg { 
++
++    width: 24px; 
++
++    height: 24px; 
++
++    fill: gray; 
++
++    border: 1px solid #d9d9d9; 
++
++    padding: 5px; 
++
++    border-radius: 100%; 
++
++    top: 10px; 
+ 
+-tbody tr:nth-child(even) { 
++    inset-inline-start: 0; 
+ 
+-    background-color: #f2f2f2; /* Ligne grise claire */ 
++    position: absolute; 
+ 
+ } 
+ 
+- 
++  
++
++.option h2 { 
++
++    font-size: 19px; 
++
++    text-decoration: underline; 
++
++} 
+ 
+-/* --- STYLE POUR LE MODE SOMBRE (news-template) --- */ 
++  
+ 
+-/* On cible la classe .dark qui est ajoutée par le template */ 
++.option p { 
+ 
+-.dark table { 
++    padding-top: 3px; 
+ 
+-    background-color: #1a1a1a; /* Fond de secours sombre */ 
++    color: #231f20; 
+ 
+-    color: #ffffff;            /* Force le texte en blanc pour TOUTES les lignes */ 
++    font-size: 15px; 
+ 
+-    border-color: #444; 
++    font-weight: 300; 
+ 
+ } 
+ 
+- 
++  
++
++@media (max-width: 996px) { 
++
++    body { 
+ 
+-.dark th, .dark td { 
++        max-width: 780px; 
+ 
+-    border-color: #444; 
++    } 
+ 
+ } 
+ 
+- 
++  
+ 
+-/* Lignes impaires en mode sombre (celles qui posent problème) */ 
++@media (max-width: 767px) { 
+ 
+-.dark tbody tr:nth-child(odd) { 
++    .option { 
+ 
+-    background-color: #1a1a1a; /* Un gris très foncé */ 
++        flex: 0 0 50%; 
+ 
+-    color: #ffffff !important; /* Force le texte blanc */ 
++    } 
+ 
+ } 
+ 
+- 
++  
+ 
+-/* Lignes paires en mode sombre (Zebra) */ 
++@media (max-width: 599px) { 
+ 
+-.dark tbody tr:nth-child(even) { 
++    .main { 
+ 
+-    background-color: #2d2d2d; /* Un gris un peu plus clair */ 
++        padding: 20px 0; 
+ 
+-    color: #ffffff !important; 
++    } 
++
++  
++
++    .figure-space { 
++
++        max-width: 200px; 
++
++    } 
++
++  
++
++    .footer { 
++
++        display: block; 
++
++        width: 300px; 
++
++        margin: 0 auto; 
++
++    } 
+ 
+ } 
+ 
+- 
++  
+ 
+-/* Correction du survol (Hover) en mode sombre */ 
++@media (max-width: 360px) { 
+ 
+-.dark tbody tr:hover { 
++    .header-link { 
+ 
+-    background-color: #3d3d3d !important; 
++        max-width: 100px; 
++
++    } 
+ 
+ } 
+ 
++  
++
++/* modif7 : rapatrié de py/wnt202512/static/css */  
++
++  
++
++.site-padding {  
++
++  
++
++    padding-left: 0 !important;  
++
++  
++
++    padding-right: 0 !important;  
++
++  
++
++}  
++
++  
++
++   
++
++  
++
++.site-container {  
++
++  
++
++    max-width: 100% !important;  
++
++  
++
++    width: 100% !important;  
++
++  
++
++}  
++
++  
++
++h2:not(.sr-only) {  
++
++  
++
++    display: block !important;  
++
++  
++
++    padding-left: 0% !important; /* Aligne le titre avec les cartes */  
++
++  
++
++    margin-top: 30px !important;  
++
++  
++
++    margin-bottom: 20px !important;  
++
++  
++
++    font-size: 2rem; /* Ajustez selon vos besoins */  
++
++  
++
++    color: #1a2a2e; /* La couleur de votre main.css */  
++
++  
++
++}  
++
++  
++
++  
++
++/* Modif7 vs encadré dans les tableaux */  
++
++  
++ 
++
++--- STYLE DE BASE (FOND CLAIR) --- */  
++
++  
++
++table {  
++
++  
++
++    width: 100%;  
++
++  
++
++    border-collapse: collapse;  
++
++  
++
++    color: #333333; /* Texte sombre par défaut */  
++
++  
++
++    background-color: #ffffff; /* Fond blanc forcé */  
++
++  
++
++}  
++
++  
++
++  
++
++  
++
++th, td {  
++
++  
++
++    border: 1px solid #ddd;  
++
++  
++
++    padding: 10px;  
++
++  
++
++}  
++
++  
++
++  
++
++  
++
++thead tr {  
++
++  
++
++    background-color: #2c3e50;  
++
++  
++
++    color: #ffffff;  
++
++  
++
++}  
++
++  
++
++  
++
++  
++
++tbody tr:nth-child(even) {  
++
++  
++
++    background-color: #f2f2f2; /* Ligne grise claire */  
++
++  
++
++}  
++
++  
++
++  
++
++  
++
++/* --- STYLE POUR LE MODE SOMBRE (news-template) --- */  
++
++  
++
++/* On cible la classe .dark qui est ajoutée par le template */  
++
++  
++
++.dark table {  
++
++  
++
++    background-color: #1a1a1a; /* Fond de secours sombre */  
++
++  
++
++    color: #ffffff;            /* Force le texte en blanc pour TOUTES les lignes */  
++
++  
++
++    border-color: #444;  
++
++  
++
++}  
++
++  
++
++  
++
++  
++
++.dark th, .dark td {  
++
++  
++
++    border-color: #444;  
++
++  
++
++}  
++
++  
++
++  
++
++  
++
++/* Lignes impaires en mode sombre (celles qui posent problème) */  
++
++  
++
++.dark tbody tr:nth-child(odd) {  
++
++  
++
++    background-color: #1a1a1a; /* Un gris très foncé */  
++
++  
++
++    color: #ffffff !important; /* Force le texte blanc */  
++
++  
++
++}  
++
++  
++
++  
++
++  
++
++/* Lignes paires en mode sombre (Zebra) */  
++
++  
++
++.dark tbody tr:nth-child(even) {  
++
++  
++
++    background-color: #2d2d2d; /* Un gris un peu plus clair */  
++
++  
++
++    color: #ffffff !important;  
++
++  
++
++}  
++
++  
++
++  
++
++  
++
++/* Correction du survol (Hover) en mode sombre */  
++
++  
++
++.dark tbody tr:hover {  
++
++  
++
++    background-color: #3d3d3d !important;  
++
++  
++
++}  
++
++  
++
++ 
+  
+  

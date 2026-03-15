@@ -1,0 +1,119 @@
+    /* Style forcé pour les titres de section */ 
+
+    h2:not(.sr-only) { 
+
+        display: block !important; 
+
+        font-size: 1rem !important; /* a 2.25 - Taille imposante (env. 36px) */ 
+
+        font-weight: 700 !important;    /* Gras prononcé */ 
+
+        line-height: 1.2 !important; 
+
+        color: #1a2a2e !important;      /* La couleur sombre de votre thème */ 
+
+        padding-left: 5% !important;    /* Alignement avec les cartes */ 
+
+        margin-top: 2.5rem !important;  /* Espace au-dessus */ 
+
+        margin-bottom: 1.5rem !important; /* Espace en-dessous */ 
+
+        text-align: left !important; 
+
+    } 
+    
+    
+    
+    
+    /* On garde vos correctifs de largeur */ 
+
+    .site-container { max-width: none !important; width: 100% !important; } 
+
+    .site-padding { padding: 0 !important; }
+
+
+
+--------------------------------------------
+<style> 
+    /* On garde vos correctifs de largeur */ 
+
+    .site-container { max-width: none !important; width: 100% !important; } 
+
+    .site-padding { padding: 0 !important; }
+
+  
+
+    /* On organise les cartes en colonnes propres */ 
+
+    .card-section { 
+
+        display: grid; 
+
+        /* Crée 3 colonnes sur ordinateur, 1 sur mobile */ 
+
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+
+        gap: 30px; /* Espace entre les cartes */ 
+
+        padding: 20px 5%; /* Marge interne pour que les cartes ne touchent pas les bords de l'écran */ 
+
+    } 
+
+  
+
+    .card { 
+
+        border: 1px solid #e6e6e6; 
+
+        padding: 20px; 
+
+        border-radius: 8px; 
+
+        background-color: #fff; 
+
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+
+    } 
+    
+        /* Style forcé pour les titres de section */ 
+
+    h2:not(.sr-only) { 
+
+        display: block !important; 
+
+        font-size: 1rem !important; /* a 2.25 - Taille imposante (env. 36px) */ 
+
+        font-weight: 700 !important;    /* Gras prononcé */ 
+
+        line-height: 1.2 !important; 
+
+        color: #1a2a2e !important;      /* La couleur sombre de votre thème */ 
+
+        padding-left: 5% !important;    /* Alignement avec les cartes */ 
+
+        margin-top: 2.5rem !important;  /* Espace au-dessus */ 
+
+        margin-bottom: 1.5rem !important; /* Espace en-dessous */ 
+
+        text-align: left !important; 
+
+    } 
+
+ 
+
+    /* Optionnel : Style pour les titres à l'intérieur des cartes (h3) */ 
+
+    .card h3 { 
+
+        font-size: 1.5rem !important; 
+
+        font-weight: 600 !important; 
+
+        margin-bottom: 10px !important; 
+
+    } 
+
+</style> 
+
+
+

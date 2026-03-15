@@ -1,409 +1,814 @@
-html {
-    box-sizing: border-box;
-}
+html { 
 
-*,
-*:before,
-*:after {
-    box-sizing: inherit;
-}
-
-
-.card-link { 
-
-    color: #007bff;          /* Une couleur bleue classique */ 
-
-    text-decoration: underline; /* Force le soulignement */ 
-
-    font-weight: bold; 
+    box-sizing: border-box; 
 
 } 
 
- 
+  
 
-.card-link:hover { 
+*, 
 
-    color: #0056b3;          /* Devient plus foncé au survol */ 
+*:before, 
 
-    text-decoration: none;    /* Optionnel : enlever le soulignement au survol */ 
+*:after { 
 
-} 
-
- 
-
-/* Si vous voulez qu'il ressemble à un bouton comme dans votre classe HTML "button" */ 
-
-.button { 
-
-    display: inline-block; 
-
-    padding: 10px 20px; 
-
-    background-color: #007bff; 
-
-    color: white !important; 
-
-    text-decoration: none; 
-
-    border-radius: 4px; 
-
-    margin-top: 10px; 
+    box-sizing: inherit; 
 
 } 
 
- 
+  
 
-.button:hover { 
+  
 
-    background-color: #0056b3; 
+.card-link {  
 
-} 
- 
-.card-section { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    gap: 20px; 
-} 
-.card { 
-    border: 1px solid #ccc; 
-    padding: 1rem; 
-    border-radius: 8px; 
-} 
- 
- 
-body {
-    max-width: 960px;
-    min-height: 100vh;
-    margin: 0 auto;
-    padding: 0 15px;
-    color: #231f20;
-    font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
-    line-height: 1.25;
-}
+  
 
-a {
-    background-color: transparent;
-    color: #308282;
-    text-decoration: underline;
-}
+    color: #007bff;          /* Une couleur bleue classique */  
 
-a:hover {
-    color: #ea1b10;
-}
+  
 
-h1,
-h2,
-h3,
-h4,
-h5,
-p,
-ul {
-    padding: 0;
-    margin: 0;
-    font-weight: 400;
-}
+    text-decoration: underline; /* Force le soulignement */  
 
-/* 10mars Force la visibilité des titres H2 en mode sombre */ 
+  
 
-.dark h2 { 
+    font-weight: bold;  
 
-    color: #ffffff !important; 
+  
 
-} 
+}  
 
- 
+  
 
-/* 10mars Par sécurité, vous pouvez aussi le faire pour tous les titres */ 
+  
 
-.dark h1, .dark h2, .dark h3, .dark h4 { 
+  
 
-    color: #ffffff !important; 
+.card-link:hover {  
 
-} 
+  
 
-svg:not(:root) {
-    overflow: hidden;
-}
+    color: #0056b3;          /* Devient plus foncé au survol */  
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #e6e6e6;
-}
+  
 
-.logo {
-    width: 150px;
-    margin-inline-end: 20px;
-}
+    text-decoration: none;    /* Optionnel : enlever le soulignement au survol */  
 
-.logo a {
-    display: block;
-}
+  
 
-.figure-logo {
-    max-width: 150px;
-    max-height: 55.1px;
-}
+}  
 
-.release-notes {
-    font-size: 14px;
-}
+  
 
-.main {
-    padding: 40px 0;
-    margin: 0 auto;
-    text-align: center;
-}
+  
 
-.figure-space {
-    max-width: 265px;
-}
+  
 
-@keyframes pos {
-    0%, 100% {
-        transform: rotate(-6deg);
-    }
-    50% {
-        transform: rotate(6deg);
-    }
-}
+/* Si vous voulez qu'il ressemble à un bouton comme dans votre classe HTML "button" */  
 
-.egg {
-    fill: #43b1b0;
-    animation: pos 3s ease infinite;
-    transform: translateY(50px);
-    transform-origin: 50% 80%;
-}
+  
 
-.main-text {
-    max-width: 400px;
-    margin: 5px auto;
-}
+.button {  
 
-.main-text h1 {
-    font-size: 22px;
-}
+  
 
-.main-text p {
-    margin: 15px auto 0;
-}
+    display: inline-block;  
 
-.footer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    border-top: 1px solid #e6e6e6;
-    padding: 10px;
-}
+  
 
-.option {
-    display: block;
-    padding: 10px 10px 10px 34px;
-    position: relative;
-    text-decoration: none;
-}
+    padding: 10px 20px;  
 
-.option svg {
-    width: 24px;
-    height: 24px;
-    fill: gray;
-    border: 1px solid #d9d9d9;
-    padding: 5px;
-    border-radius: 100%;
-    top: 10px;
-    inset-inline-start: 0;
-    position: absolute;
-}
+  
 
-.option h2 {
-    font-size: 19px;
-    text-decoration: underline;
-}
+    background-color: #007bff;  
 
-.option p {
-    padding-top: 3px;
-    color: #231f20;
-    font-size: 15px;
-    font-weight: 300;
-}
+  
 
-@media (max-width: 996px) {
-    body {
-        max-width: 780px;
-    }
-}
+    color: white !important;  
 
-@media (max-width: 767px) {
-    .option {
-        flex: 0 0 50%;
-    }
-}
+  
 
-@media (max-width: 599px) {
-    .main {
-        padding: 20px 0;
-    }
+    text-decoration: none;  
 
-    .figure-space {
-        max-width: 200px;
-    }
+  
 
-    .footer {
-        display: block;
-        width: 300px;
-        margin: 0 auto;
-    }
-}
+    border-radius: 4px;  
 
-@media (max-width: 360px) {
-    .header-link {
-        max-width: 100px;
-    }
-}
+  
 
-/* modif7 : rapatrié de py/wnt202512/static/css */ 
+    margin-top: 10px;  
 
-.site-padding { 
+  
 
-    padding-left: 0 !important; 
+}  
 
-    padding-right: 0 !important; 
+  
+
+  
+
+  
+
+.button:hover {  
+
+  
+
+    background-color: #0056b3;  
+
+  
+
+}  
+
+  
+
+.card-section {  
+
+    display: grid;  
+
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  
+
+    gap: 20px;  
+
+}  
+
+.card {  
+
+    border: 1px solid #ccc;  
+
+    padding: 1rem;  
+
+    border-radius: 8px;  
+
+}  
+
+  
+
+  
+
+body { 
+
+    max-width: 960px; 
+
+    min-height: 100vh; 
+
+    margin: 0 auto; 
+
+    padding: 0 15px; 
+
+    color: #231f20; 
+
+    font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif; 
+
+    line-height: 1.25; 
 
 } 
 
-  
+  
 
-.site-container { 
+a { 
 
-    max-width: 100% !important; 
+    background-color: transparent; 
 
-    width: 100% !important; 
+    color: #308282; 
 
-} 
-
-/* modif7 */
-h2:not(.sr-only) {  
-
-    display: block !important;  
-
-    padding-left: 0 !important; /* Changez 5% par 0 */ 
-
-    margin-top: 30px !important;  
-
-    margin-bottom: 20px !important;  
-
-    font-size: 2rem;  
-
-    color: #1a2a2e;  
+    text-decoration: underline; 
 
 } 
 
-/* Modif7 vs encadré dans les tableaux */ 
+  
 
-/* 8 et 10 fev */ 
+a:hover { 
 
-/* --- STYLE DE BASE (FOND CLAIR) --- */ 
-
-table { 
-
-    width: 100%; 
-
-    border-collapse: collapse; 
-
-    color: #333333; /* Texte sombre par défaut */ 
-
-    background-color: #ffffff; /* Fond blanc forcé */ 
+    color: #ea1b10; 
 
 } 
 
- 
+  
 
-th, td { 
+h1, 
 
-    border: 1px solid #ddd; 
+h2, 
+
+h3, 
+
+h4, 
+
+h5, 
+
+p, 
+
+ul { 
+
+    padding: 0; 
+
+    margin: 0; 
+
+    font-weight: 400; 
+
+} 
+
+  
+
+/* 10mars Force la visibilité des titres H2 en mode sombre */  
+
+  
+
+.dark h2 {  
+
+  
+
+    color: #ffffff !important;  
+
+  
+
+}  
+
+  
+
+  
+
+  
+
+/* 10mars Par sécurité, vous pouvez aussi le faire pour tous les titres */  
+
+  
+
+.dark h1, .dark h2, .dark h3, .dark h4 {  
+
+  
+
+    color: #ffffff !important;  
+
+  
+
+}  
+
+  
+
+svg:not(:root) { 
+
+    overflow: hidden; 
+
+} 
+
+  
+
+.header { 
+
+    display: flex; 
+
+    justify-content: space-between; 
+
+    align-items: center; 
+
+    padding-top: 20px; 
+
+    padding-bottom: 10px; 
+
+    border-bottom: 1px solid #e6e6e6; 
+
+} 
+
+  
+
+.logo { 
+
+    width: 150px; 
+
+    margin-inline-end: 20px; 
+
+} 
+
+  
+
+.logo a { 
+
+    display: block; 
+
+} 
+
+  
+
+.figure-logo { 
+
+    max-width: 150px; 
+
+    max-height: 55.1px; 
+
+} 
+
+  
+
+.release-notes { 
+
+    font-size: 14px; 
+
+} 
+
+  
+
+.main { 
+
+    padding: 40px 0; 
+
+    margin: 0 auto; 
+
+    text-align: center; 
+
+} 
+
+  
+
+.figure-space { 
+
+    max-width: 265px; 
+
+} 
+
+  
+
+@keyframes pos { 
+
+    0%, 100% { 
+
+        transform: rotate(-6deg); 
+
+    } 
+
+    50% { 
+
+        transform: rotate(6deg); 
+
+    } 
+
+} 
+
+  
+
+.egg { 
+
+    fill: #43b1b0; 
+
+    animation: pos 3s ease infinite; 
+
+    transform: translateY(50px); 
+
+    transform-origin: 50% 80%; 
+
+} 
+
+  
+
+.main-text { 
+
+    max-width: 400px; 
+
+    margin: 5px auto; 
+
+} 
+
+  
+
+.main-text h1 { 
+
+    font-size: 22px; 
+
+} 
+
+  
+
+.main-text p { 
+
+    margin: 15px auto 0; 
+
+} 
+
+  
+
+.footer { 
+
+    display: flex; 
+
+    flex-wrap: wrap; 
+
+    justify-content: space-between; 
+
+    border-top: 1px solid #e6e6e6; 
 
     padding: 10px; 
 
 } 
 
- 
+  
 
-thead tr { 
+.option { 
 
-    background-color: #2c3e50; 
+    display: block; 
 
-    color: #ffffff; 
+    padding: 10px 10px 10px 34px; 
 
-} 
+    position: relative; 
 
- 
-
-tbody tr:nth-child(even) { 
-
-    background-color: #f2f2f2; /* Ligne grise claire */ 
+    text-decoration: none; 
 
 } 
 
- 
+  
 
-/* --- STYLE POUR LE MODE SOMBRE (news-template) --- */ 
+.option svg { 
 
-/* On cible la classe .dark qui est ajoutée par le template */ 
+    width: 24px; 
 
-.dark table { 
+    height: 24px; 
 
-    background-color: #1a1a1a; /* Fond de secours sombre */ 
+    fill: gray; 
 
-    color: #ffffff;            /* Force le texte en blanc pour TOUTES les lignes */ 
+    border: 1px solid #d9d9d9; 
 
-    border-color: #444; 
+    padding: 5px; 
 
-} 
+    border-radius: 100%; 
 
- 
+    top: 10px; 
 
-.dark th, .dark td { 
+    inset-inline-start: 0; 
 
-    border-color: #444; 
-
-} 
-
- 
-
-/* Lignes impaires en mode sombre (celles qui posent problème) */ 
-
-.dark tbody tr:nth-child(odd) { 
-
-    background-color: #1a1a1a; /* Un gris très foncé */ 
-
-    color: #ffffff !important; /* Force le texte blanc */ 
+    position: absolute; 
 
 } 
 
- 
+  
 
-/* Lignes paires en mode sombre (Zebra) */ 
+.option h2 { 
 
-.dark tbody tr:nth-child(even) { 
+    font-size: 19px; 
 
-    background-color: #2d2d2d; /* Un gris un peu plus clair */ 
-
-    color: #ffffff !important; 
+    text-decoration: underline; 
 
 } 
 
- 
+  
 
-/* Correction du survol (Hover) en mode sombre */ 
+.option p { 
 
-.dark tbody tr:hover { 
+    padding-top: 3px; 
 
-    background-color: #3d3d3d !important; 
+    color: #231f20; 
+
+    font-size: 15px; 
+
+    font-weight: 300; 
 
 } 
 
+  
+
+@media (max-width: 996px) { 
+
+    body { 
+
+        max-width: 780px; 
+
+    } 
+
+} 
+
+  
+
+@media (max-width: 767px) { 
+
+    .option { 
+
+        flex: 0 0 50%; 
+
+    } 
+
+} 
+
+  
+
+@media (max-width: 599px) { 
+
+    .main { 
+
+        padding: 20px 0; 
+
+    } 
+
+  
+
+    .figure-space { 
+
+        max-width: 200px; 
+
+    } 
+
+  
+
+    .footer { 
+
+        display: block; 
+
+        width: 300px; 
+
+        margin: 0 auto; 
+
+    } 
+
+} 
+
+  
+
+@media (max-width: 360px) { 
+
+    .header-link { 
+
+        max-width: 100px; 
+
+    } 
+
+} 
+
+  
+
+/* modif7 : rapatrié de py/wnt202512/static/css */  
+
+  
+
+.site-padding {  
+
+  
+
+    padding-left: 0 !important;  
+
+  
+
+    padding-right: 0 !important;  
+
+  
+
+}  
+
+  
+
+   
+
+  
+
+.site-container {  
+
+  
+
+    max-width: 100% !important;  
+
+  
+
+    width: 100% !important;  
+
+  
+
+}  
+
+  
+
+h2:not(.sr-only) {  
+
+  
+
+    display: block !important;  
+
+  
+
+    padding-left: 0% !important; /* Aligne le titre avec les cartes */  
+
+  
+
+    margin-top: 30px !important;  
+
+  
+
+    margin-bottom: 20px !important;  
+
+  
+
+    font-size: 2rem; /* Ajustez selon vos besoins */  
+
+  
+
+    color: #1a2a2e; /* La couleur de votre main.css */  
+
+  
+
+}  
+
+  
+
+  
+
+/* Modif7 vs encadré dans les tableaux */  
+
+  
+ 
+
+--- STYLE DE BASE (FOND CLAIR) --- */  
+
+  
+
+table {  
+
+  
+
+    width: 100%;  
+
+  
+
+    border-collapse: collapse;  
+
+  
+
+    color: #333333; /* Texte sombre par défaut */  
+
+  
+
+    background-color: #ffffff; /* Fond blanc forcé */  
+
+  
+
+}  
+
+  
+
+  
+
+  
+
+th, td {  
+
+  
+
+    border: 1px solid #ddd;  
+
+  
+
+    padding: 10px;  
+
+  
+
+}  
+
+  
+
+  
+
+  
+
+thead tr {  
+
+  
+
+    background-color: #2c3e50;  
+
+  
+
+    color: #ffffff;  
+
+  
+
+}  
+
+  
+
+  
+
+  
+
+tbody tr:nth-child(even) {  
+
+  
+
+    background-color: #f2f2f2; /* Ligne grise claire */  
+
+  
+
+}  
+
+  
+
+  
+
+  
+
+/* --- STYLE POUR LE MODE SOMBRE (news-template) --- */  
+
+  
+
+/* On cible la classe .dark qui est ajoutée par le template */  
+
+  
+
+.dark table {  
+
+  
+
+    background-color: #1a1a1a; /* Fond de secours sombre */  
+
+  
+
+    color: #ffffff;            /* Force le texte en blanc pour TOUTES les lignes */  
+
+  
+
+    border-color: #444;  
+
+  
+
+}  
+
+  
+
+  
+
+  
+
+.dark th, .dark td {  
+
+  
+
+    border-color: #444;  
+
+  
+
+}  
+
+  
+
+  
+
+  
+
+/* Lignes impaires en mode sombre (celles qui posent problème) */  
+
+  
+
+.dark tbody tr:nth-child(odd) {  
+
+  
+
+    background-color: #1a1a1a; /* Un gris très foncé */  
+
+  
+
+    color: #ffffff !important; /* Force le texte blanc */  
+
+  
+
+}  
+
+  
+
+  
+
+  
+
+/* Lignes paires en mode sombre (Zebra) */  
+
+  
+
+.dark tbody tr:nth-child(even) {  
+
+  
+
+    background-color: #2d2d2d; /* Un gris un peu plus clair */  
+
+  
+
+    color: #ffffff !important;  
+
+  
+
+}  
+
+  
+
+  
+
+  
+
+/* Correction du survol (Hover) en mode sombre */  
+
+  
+
+.dark tbody tr:hover {  
+
+  
+
+    background-color: #3d3d3d !important;  
+
+  
+
+}  
+
+  
+
+ 
  
  
