@@ -1,0 +1,13 @@
+diff --git a/templates/pages/article_page.html b/templates/pages/article_page.html
+index 1d13957f..43cfbdde 100644
+--- a/templates/pages/article_page.html
++++ b/templates/pages/article_page.html
+@@ -43,7 +43,7 @@
+ 
+ {% if page.image %}
+ <div class="site-padding site-container pb-10 md:pb-20">
+-    <div class="bg-mackerel-300 pr-10 overflow-hidden w-full max-h-[350px] md:max-h-[400px] lg:max-h-[640px]">
++    <div class="bg-mackerel-300 overflow-hidden w-full max-h-[350px] md:max-h-[400px] lg:max-h-[640px]">
+         {% image page.image.0.value.image format-jpeg width-1000 as page_image_1x_jpg %}
+         {% image page.image.0.value.image format-jpeg width-2000 as page_image_2x_jpg %}
+         {% image page.image.0.value.image format-webp width-1000 as page_image_1x_webp %}
