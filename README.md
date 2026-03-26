@@ -1,16 +1,14 @@
-#version 2026-01-22 du dépôt git atwnt1 (essai d’une copie du projet  wagtail/news-template: A Wagtail template for a news site)
+#version 2026-03-25 du dépôt git atwnt1 (essai d’une copie du projet  wagtail/news-template: A Wagtail template for a news site)
 voir https://github.com/wagtail/news-template 
 
   
 
 en mode apprentissage de wagtail et django avec les versions suivantes : 
 
-wagtail 7.2.1 
-
-Django 5.1.15 
+wagtail 7.3.1 
+django 5.2.12 
 
 Python 3.10.12  
-
 Wagtail-table-block 2.0.0
 
  
